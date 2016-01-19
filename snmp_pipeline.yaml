@@ -1,0 +1,29 @@
+---
+sources:
+    - name: snmp_source
+      interval: 60
+          - "hardware.cpu.load.*"
+          - "hardware.network.incoming.bytes"
+      resources:
+          - snmp://192.168.0.110
+      discovery:
+      sinks:
+          - file_sink
+    - name: memory
+      interval: 300
+      meters:
+          - "hardware.memory.*"
+      discovery:
+          - "tripleo_overcloud_nodes"
+      sinks:
+          - meter_sink   
+sinks:
+    - name: meter_sink
+      transformers:
+      publishers:
+          - notifier://
+    - name: file_sink
+      transformers:
+      publishers:
+          - file:///tmp/abc
+
