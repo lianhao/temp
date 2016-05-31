@@ -216,14 +216,14 @@ def get_parser():
     parser.add_argument(
         '--random_min',
         help='The random min border of amount for added to given volume.',
-        type=int,
-        default=0,
+        type=float,
+        default=-1,
     )
     parser.add_argument(
         '--random_max',
         help='The random max border of amount for added to given volume.',
-        type=int,
-        default=0,
+        type=float,
+        default=-1,
     )
     parser.add_argument(
         '--resources-count',
